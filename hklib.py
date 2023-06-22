@@ -516,11 +516,6 @@ class HKLib(libAPI):
 
 if __name__ == "__main__":
     lib = HKLib()
-    login = lib.login('202001074214', '000000')
-    print(lib.getStatus())
-    a = lib.reserve('二楼北15号', start='9:00', end='22:00', date='Tomorrow')
-    print(a)
-    print(lib.getStatus())
-    # print(a.reserve('二楼北15号', start='now', end='23:00', date='Tomorrow'))
-    # print(a.fuzzySearch())
-    # a.fuzzySearch(date='Today', room='二楼南001-096区')
+    login = lib.login('000000000000', '000000')
+    print(lib.reserve('二楼北15号', start='now', end='23:00', date='Tomorrow'))
+    print(lib.fuzzySearch())

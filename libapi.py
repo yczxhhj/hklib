@@ -197,5 +197,5 @@ class libAPI(object):
 
 if __name__ == "__main__":
     a = libAPI()
-    b = a.getToken('202001074214', '000000')
+    b = a.getToken('000000000000', '000000')
     print(a.seatDate(b, room_id=3, seat_num=15, date='Tomorrow'))
