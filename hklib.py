@@ -329,8 +329,9 @@ class HKLib(libAPI):
 
     # 根据座位名称来进行搜索
     def search(self, seat_name: str = None, date: str = 'Today'):
-        if seat_name in list(self.roomDict.keys())[:4]:
-            room_id = self.roomDict[seat_name]
+        pro_name = re.search(r'(\D+?)\d{1,3}号', seat_name).group(1)
+        if pro_name in list(self.roomDict.keys())[:4]:
+            room_id = self.roomDict[pro_name]
         else:
             if re.match(r'[一二三四]楼[南北]\d{1,3}号', seat_name) is None:
                 raise AttributeError("Incorrect seat name, the correct format is '二楼南15号'")
@@ -345,6 +346,10 @@ class HKLib(libAPI):
     # 判断座位在图书馆的那个房间
     def _judgeRoom(self, seat_name):
         room_list = {
+            '一层大厅': [[1, 16]],
+            '一层阅览室': [1, 182],
+            '二层休闲区': [[1, 16]],
+            '三层休闲区': [[1, 16]],
             '二楼北': [[1, 128], [129, 244], [245, 284]],
             '二楼南': [[1, 96], [97, 280], [281, 361]],
             '三楼北': [[1, 112], [113, 236], [237, 280]],
@@ -517,5 +522,4 @@ class HKLib(libAPI):
 if __name__ == "__main__":
     lib = HKLib()
     login = lib.login('000000000000', '000000')
-    print(lib.reserve('二楼北15号', start='now', end='23:00', date='Tomorrow'))
-    print(lib.fuzzySearch())
+    print(lib.reserve('二层休闲区5号', start='7:30', end='9:00', date='Tomorrow'))
