@@ -428,18 +428,18 @@ class HKLib(libAPI):
             return False
 
     # 调用图书馆 api 实现取消座位
-    def cancel(self, data: str = 'Today'):
+    def cancel(self, date: str = 'Today'):
         if not self.loginStatus:
             raise AttributeError("You are not logged in yet, please login!!!")
-        if data not in self._status:
+        if date not in self._status:
             raise AttributeError("Cancellations can only made 'Today' or 'Tomorrow'.")
-        if len(self._status[data]) == 0:
-            print(f"You don't have an appointment {data}")
+        if len(self._status[date]) == 0:
+            print(f"You don't have an appointment {date}")
             return False
-        if self._status[data]['status'] != 'Reserve':
-            print(f"The status of your seat {data} is {self._status[data]['status']}")
+        if self._status[date]['status'] != 'Reserve':
+            print(f"The status of your seat {date} is {self._status[date]['status']}")
             return False
-        cancel_url = f"{super().api['cancel']}/{self._status[data]['id']}"
+        cancel_url = f"{super().api['cancel']}/{self._status[date]['id']}"
         params = {
             'token': self.token
         }
