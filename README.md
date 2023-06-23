@@ -1,6 +1,6 @@
 ## [华北科技学院图书馆](http://seat.ncist.edu.cn)座位预约系统
 
-Create by [YCZX](https://yczxvip.top)
+Create by [YCZX](#)
 
 ## 文件目录
 

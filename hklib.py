@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from libapi import libAPI
-from codeocr.ocr import CodeOCR
+from .libapi import libAPI
+from .codeocr.ocr import CodeOCR
 import requests
 import json
 import base64
