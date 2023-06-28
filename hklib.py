@@ -445,7 +445,7 @@ class HKLib(libAPI):
         }
         cancel_json = json.loads(self.session.get(cancel_url, params=params).text)
         if cancel_json['status'] == 'success':
-            self.getStatus()
+            self.status[date] = {}
             return True
         if cancel_json['status'] == 'fail':
             print(cancel_json['message'])
